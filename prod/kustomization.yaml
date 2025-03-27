@@ -13,7 +13,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/host
-        value: cats-prod.apps.edu-lab-2.mdlwr.se
+        value: bellas-cats-prod.apps.edu-lab-2.mdlwr.se
 
   # Add container-arguments specific to test
   - target:

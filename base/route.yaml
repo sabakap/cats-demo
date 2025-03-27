@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   name: cats
 spec:
-  host: cats.apps.edu-lab-2.mdlwr.se
+  host: bellas-cats.apps.edu-lab-2.mdlwr.se
   port:
     targetPort: 80-8080
   tls:
