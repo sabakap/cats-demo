@@ -11,7 +11,7 @@ spec:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
   to:
-    kind: ""
+    kind: "Service"
     name: cats
     weight: null
 status: {}
