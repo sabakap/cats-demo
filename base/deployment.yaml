@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cats
+  name: cats
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cats
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: cats
+    spec:
+      containers:
+      - image: harbor.mdlwr.se/cats/cats:latest
+        name: cats
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}

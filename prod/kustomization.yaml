@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: vattenmelon-prod
+resources:
+  - ../base
+patches:
+
+  # Replaces the hostname for our route
+  - target:
+      kind: Route
+      version: v1
+      group: route.openshift.io
+    patch: |-
+      - op: replace
+        path: /spec/host
+        value: cats-prod.apps.edu-lab-2.mdlwr.se
+
+  # Add container-arguments specific to test
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/args
+        value:
+          - "-comment='😻 You will only find Prod-cats here'"
+          - "-title='A Prod-Cat walks into a bar'"
+          - "-url=https://media.tenor.com/GMWFdHcmxAYAAAAM/yapparai.gif"

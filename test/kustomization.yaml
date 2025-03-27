@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: vattenmelon-test
+resources:
+  - ../base # base overlay
+patches:
+
+  # Replaces the hostname for our route
+  - target:
+      kind: Route
+      version: v1
+      group: route.openshift.io
+    patch: |-
+      - op: replace
+        path: /spec/host
+        value: cats-test.apps.edu-lab-2.mdlwr.se
+
+  # Add container-arguments specific to test
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/args
+        value:
+          - "-comment='Test Mjau Mjau Test'"
+          - "-title='Test-Cat'"
+          - "-url=https://i.pinimg.com/originals/fd/6c/07/fd6c079e840fb1fe34e91856bb5d2b0d.gif"
